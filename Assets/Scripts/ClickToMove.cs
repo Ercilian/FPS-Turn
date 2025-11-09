@@ -4,39 +4,55 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class ClickToMove : MonoBehaviour
-
 {
+    [Header ("Movement Control")]
     Vector3 destination;
     Rigidbody rb;
-    [SerializeField] Transform destinationDummy;
+    [SerializeField] Transform destinationDummie;
     private NavMeshAgent agent;
+    Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
-        agent.destination = destinationDummy.position;
+        agent.destination = destinationDummie.position;
+        agent.updatePosition = false;
     }
 
-   
     void Update()
     {
+        // Nuevo Input System
         if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
         {
             HandleClick();
         }
+
+        animator.SetFloat("forwardMovement", agent.velocity.magnitude);
     }
     private void HandleClick()
     {
         RaycastHit hit;
+
+        // Nuevo Input System
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+
         if (Physics.Raycast(ray, out hit, 100f))
         {
-            destinationDummy.position = hit.point;
-            agent.destination = destinationDummy.position;
+            destinationDummie.position = hit.point;
+            agent.destination = destinationDummie.position;
         }
+    }
 
+    private void OnAnimatorMove()
+    {
+        Vector3 position = animator.rootPosition;
+        position.y = agent.nextPosition.y;
+        transform.position = position;
+        agent.nextPosition = transform.position;
     }
 }
