@@ -4,13 +4,18 @@ using System.Collections;
 
 public class TurnManager : MonoBehaviour
 {
-    public bool isPlayerTurn = true; //empieza el turno del jugador al comienzo del juego
+    public static TurnManager Instance; // Create a singleton instance
+    public bool isPlayerTurn = true; // Variable to track whose turn it is
 
-    public List<Units> enemyUnits = new List<Units>(); //lista de unidades enemigas
-    public List<Units> playerUnits = new List<Units>(); //lista de unidades del jugador
+    public List<Units> enemyUnits = new List<Units>();
+    public List<Units> playerUnits = new List<Units>();
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         StartPlayerTurn();
