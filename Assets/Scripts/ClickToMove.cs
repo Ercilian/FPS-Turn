@@ -14,14 +14,16 @@ public class ClickToMove : MonoBehaviour
     [SerializeField] Transform destinationDummie;
     private NavMeshAgent agent;
     Animator animator;
-    void Start()
+    void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        agent.destination = destinationDummie.position;
         agent.updatePosition = false;
+        agent.destination = destinationDummie.position;
+        
+
     }
 
     void Update()
@@ -30,6 +32,9 @@ public class ClickToMove : MonoBehaviour
         if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
         {
             HandleClick();
+            Units unit = GetComponent<Units>();
+            unit.FinishMove();
+        
         }
 
         animator.SetFloat("forwardMovement", agent.velocity.magnitude);
@@ -45,7 +50,7 @@ public class ClickToMove : MonoBehaviour
         {
             destinationDummie.position = hit.point;
             agent.destination = destinationDummie.position;
-            hit.collider.GetComponent<uint>();
+            hit.collider.GetComponent<Units>();
         }
     }
 

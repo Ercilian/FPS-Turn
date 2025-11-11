@@ -2,36 +2,46 @@ using UnityEngine;
 
 public class Units : MonoBehaviour
 {
-    public bool hasActed = true;
     [SerializeField] string characterName;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public bool hasActed = true;
+    bool hasAttacked = false;
+    bool hasMoved = false;
+    [SerializeField] bool isPlayerUnit;
+    ClickToMove clickToMove;
+
+    private void Awake()
     {
-        
+        clickToMove = GetComponent<ClickToMove>();
+        clickToMove.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void Move()
     {
-        if (hasActed)
+        if (hasActed || hasMoved)
             return;
-
-        Debug.Log(characterName + " is moving.");
-        FinishAction();
+        
+        if (isPlayerUnit) 
+        {
+            clickToMove.enabled = true;
+            Debug.Log(characterName + " is moving.");
+        }
+        else
+        {
+            Debug.Log(characterName + " an enemy unit is moving.");
+        }
+        
     }
 
     public void Attack()
     {
-        if (hasActed)
+        if (hasActed || hasAttacked)
             return;
 
         Debug.Log(characterName + " is attacking.");
-        FinishAction();
+        
+        FinishAttack();
     }
 
     public void PassTurn()
@@ -40,12 +50,27 @@ public class Units : MonoBehaviour
             return;
 
         Debug.Log(characterName + " is passing the turn.");
+
         FinishAction();
     }
 
     public void StartTurnForThisUnit()
     {
         hasActed = false;
+        hasAttacked = false;
+        hasMoved = false;
+    }
+
+    public void FinishMove()
+    {
+        Debug.Log(characterName + " has finished moving.");
+        clickToMove.enabled = false;
+        hasMoved = true;
+    }
+
+    public void FinishAttack()
+    {
+        hasAttacked = true;
     }
     
     public void FinishAction()
