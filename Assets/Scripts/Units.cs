@@ -7,7 +7,7 @@ public class Units : MonoBehaviour
     public bool hasActed = true;
     bool hasAttacked = false;
     bool hasMoved = false;
-    [SerializeField] bool isPlayerUnit;
+    public bool isPlayerUnit;
     ClickToMove clickToMove;
 
     private void Awake()
