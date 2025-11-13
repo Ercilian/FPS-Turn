@@ -2,14 +2,7 @@ using UnityEngine;
 
 public class UiUnitSelectionToggle : MonoBehaviour
 {
-
     [SerializeField] GameObject[] elementUIToToggle;
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         string unitSelection = UnitSelection.Instance.selectedUnit != null
