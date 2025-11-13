@@ -10,6 +10,8 @@ public class TurnManager : MonoBehaviour
     public List<Units> enemyUnits = new List<Units>();
     public List<Units> playerUnits = new List<Units>();
 
+    public TurnBanner turnBanner;
+
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class TurnManager : MonoBehaviour
 
     private void StartPlayerTurn()
     {
+        turnBanner.Show("YOUR TURN");
         isPlayerTurn = true;
         ResetUnits(playerUnits);
         Debug.Log("Player's Turn Started");
@@ -30,10 +33,13 @@ public class TurnManager : MonoBehaviour
 
     private void StartEnemyTurn()
     {
+        turnBanner.Show("ENEMY TURN");
         isPlayerTurn = false;
         ResetUnits(enemyUnits);
         Debug.Log("Enemy's Turn Started");
+        StartCoroutine(EnemyTurnDelay());
     }
+
     private void ResetUnits(List<Units> units)
     {
         foreach (Units unit in units)
@@ -71,9 +77,9 @@ public class TurnManager : MonoBehaviour
         }
     }
     
-    // Update is called once per frame
-    void Update()
+    private IEnumerator EnemyTurnDelay()
     {
-        
+        yield return new WaitForSeconds(5f);
+        StartPlayerTurn();
     }
 }
