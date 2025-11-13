@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class UnitSelection : MonoBehaviour
 {
     public static UnitSelection Instance;
+    public Units selectedUnit;
 
     private void Awake()
     {
@@ -19,6 +21,10 @@ public class UnitSelection : MonoBehaviour
 
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
+            if(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
@@ -27,17 +33,30 @@ public class UnitSelection : MonoBehaviour
                 Units unit = hit.collider.GetComponent<Units>();
                 if (unit != null && unit.isPlayerUnit && !unit.hasActed)
                 {
-                    SelectUnit();
+                    SelectUnit(unit);
                     Debug.Log("Unit Selected: " + unit.name);
                     // Aquí puedes agregar lógica adicional para seleccionar la unidad
                 }
-                else { Debug.Log("No unit found at clicked position."); }
+                else
+                {
+                    DeselectUnit();
+                    Debug.Log("No unit found at clicked position."); 
+                }
             }
         }
     }
-    
-    private void SelectUnit()
+
+    private void SelectUnit(Units unit)
     {
-        // Lógica para seleccionar la unidad
+        selectedUnit = unit;
+    }
+    
+    public void DeselectUnit()
+    {
+        if (selectedUnit != null)
+        {
+            Debug.Log("Unit Deselected: " + selectedUnit.name);
+            selectedUnit = null;
+        }
     }
 }
