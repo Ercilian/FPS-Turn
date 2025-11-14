@@ -1,14 +1,20 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Units : MonoBehaviour
 {
+    [Header("Unit Properties")]
     [SerializeField] string characterName;
-
     public bool hasActed = true;
     bool hasAttacked = false;
     bool hasMoved = false;
     public bool isPlayerUnit;
+    
     ClickToMove clickToMove;
+    public string CharacterName => characterName;
+    public bool HasMoved => hasMoved;
+    public bool HasAttacked => hasAttacked;
+    public bool HasActed => hasActed;
 
     private void Awake()
     {
@@ -24,8 +30,11 @@ public class Units : MonoBehaviour
         
         if (isPlayerUnit) 
         {
+            clickToMove.EnableMoveMode();
+            clickToMove.destinationDummie.position = transform.position;
             clickToMove.enabled = true;
             Debug.Log(characterName + " is moving.");
+            
         }
         else
         {
@@ -66,17 +75,29 @@ public class Units : MonoBehaviour
         Debug.Log(characterName + " has finished moving.");
         clickToMove.enabled = false;
         hasMoved = true;
+        Debug.Log("HasMoved set to true for " + characterName);
+        CheckIfFinishTurn();
     }
 
     public void FinishAttack()
     {
         hasAttacked = true;
+        CheckIfFinishTurn();
     }
     
     public void FinishAction()
     {
         hasActed = true;
+        Debug.Log(characterName + " has finished its turn.");
         TurnManager.Instance.CheckEndTurn();
         
+    }
+
+    void CheckIfFinishTurn()
+    {
+        if (hasMoved && hasAttacked)
+        {
+            FinishAction();
+        }
     }
 }

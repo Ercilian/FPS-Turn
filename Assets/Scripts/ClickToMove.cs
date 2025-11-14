@@ -1,56 +1,78 @@
-using System.Runtime.CompilerServices;
-using NUnit.Framework.Constraints;
 using UnityEngine.InputSystem;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class ClickToMove : MonoBehaviour
 {
     [Header ("Movement Control")]
+
+    public Transform destinationDummie;
+    public float moveRange = 10f;    
+    bool isSelectingDestination = false;
     Vector3 destination;
     Rigidbody rb;
-    [SerializeField] Transform destinationDummie;
+
     private NavMeshAgent agent;
     Animator animator;
-    void OnEnable()
+    Units unit;
+
+
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        unit = GetComponent<Units>();
 
-        agent.updatePosition = false;
         agent.destination = destinationDummie.position;
-        
+        agent.updatePosition = false;
+    }
 
+    public void EnableMoveMode()
+    {
+        isSelectingDestination = true;
     }
 
     void Update()
     {
-        // Nuevo Input System
-        if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
+        if (isSelectingDestination && Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
         {
             HandleClick();
-            Units unit = GetComponent<Units>();
-            unit.FinishMove();
-        
+            isSelectingDestination = false;
         }
 
-        animator.SetFloat("forwardMovement", agent.velocity.magnitude);
+        if (!unit.HasMoved && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && agent.hasPath)
+        {
+            unit.FinishMove();
+        }
+
+        if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
+        {
+            animator.SetFloat("forwardMovement", 0f);
+        }
+        else
+        {
+            animator.SetFloat("forwardMovement", agent.velocity.magnitude);
+        }
     }
+
     private void HandleClick()
     {
         RaycastHit hit;
-
-        // Nuevo Input System
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Physics.Raycast(ray, out hit, 100f))
         {
-            destinationDummie.position = hit.point;
-            agent.destination = destinationDummie.position;
-            hit.collider.GetComponent<Units>();
+            float distance = Vector3.Distance(transform.position, hit.point);
+            if (distance <= moveRange)
+            {
+                destinationDummie.position = hit.point;
+                agent.destination = destinationDummie.position;
+            }
+            else
+            {
+                Debug.Log("Destination is out of range.");
+            }
         }
     }
 

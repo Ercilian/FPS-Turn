@@ -4,14 +4,14 @@ using System.Collections;
 
 public class TurnManager : MonoBehaviour
 {
-    public static TurnManager Instance; // Create a singleton instance
-    public bool isPlayerTurn = true; // Variable to track whose turn it is
+    public static TurnManager Instance;
 
+    [Header("Units Lists")]
     public List<Units> enemyUnits = new List<Units>();
     public List<Units> playerUnits = new List<Units>();
 
     public TurnBanner turnBanner;
-
+    public bool isPlayerTurn = true;
 
     private void Awake()
     {
