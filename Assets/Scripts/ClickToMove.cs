@@ -5,7 +5,6 @@ using UnityEngine.AI;
 public class ClickToMove : MonoBehaviour
 {
     [Header ("Movement Control")]
-
     public Transform destinationDummie;
     public float moveRange = 10f;    
     bool isSelectingDestination = false;

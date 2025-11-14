@@ -1,3 +1,6 @@
+# Entrega1 - TurnManager & Movement (Unity)
+
+Unity version: 6000.2.6f2 
 
 Controles:
 - Click Izquierdo: Seleccionar unidad

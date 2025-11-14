@@ -45,15 +45,14 @@ public class TurnManager : MonoBehaviour
         foreach (Units unit in units)
         {
             unit.hasActed = false;
-            // Aquí puedes resetear el estado de cada unidad para el nuevo turno
-            // Por ejemplo, restablecer puntos de acción, mover estado, etc.
+
         }
 
     }
 
     bool AllUnitsActed(List<Units> units)
     {
-        foreach (var u in units) //var u representa cada unidad en la lista units //también se puede usar Units u
+        foreach (var u in units)
         {
             if (!u.hasActed)
             {
@@ -67,12 +66,12 @@ public class TurnManager : MonoBehaviour
     {
         if (isPlayerTurn)
         {
-            if (!AllUnitsActed(playerUnits)) //si todas las unidades del jugador han actuado
+            if (!AllUnitsActed(playerUnits))
                 StartEnemyTurn();
         }
         else
         {
-            if (!AllUnitsActed(enemyUnits)) //si todas las unidades enemigas han actuado
+            if (!AllUnitsActed(enemyUnits))
                 StartPlayerTurn();
         }
     }
