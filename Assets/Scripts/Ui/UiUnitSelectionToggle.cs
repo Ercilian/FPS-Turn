@@ -39,7 +39,7 @@ public class UiUnitSelectionToggle : MonoBehaviour
         }
     }
 
-    void DeactivateAllUIElements()
+    public void DeactivateAllUIElements()
     {
         for (int i = 0; i < elementUIToToggle.Length; i++)
         {
@@ -47,7 +47,7 @@ public class UiUnitSelectionToggle : MonoBehaviour
         }
     }
 
-    void UpdateActionButtons(GameObject panel, Units unit)
+    public void UpdateActionButtons(GameObject panel, Units unit)
     {
         var runButton = panel.transform.Find("ButtonMove")?.GetComponent<Button>();
         var attackButton = panel.transform.Find("ButtonAttack")?.GetComponent<Button>();

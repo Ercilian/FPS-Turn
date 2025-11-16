@@ -44,8 +44,7 @@ public class TurnManager : MonoBehaviour
     {
         foreach (Units unit in units)
         {
-            unit.hasActed = false;
-
+            unit.ResetActions();
         }
 
     }

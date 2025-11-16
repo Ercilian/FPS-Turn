@@ -100,4 +100,11 @@ public class Units : MonoBehaviour
             FinishAction();
         }
     }
+
+    public void ResetActions()
+    {
+        hasMoved = false;
+        hasAttacked = false;
+        hasActed = false;
+    }
 }
