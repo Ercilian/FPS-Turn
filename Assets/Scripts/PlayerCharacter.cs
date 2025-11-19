@@ -1,18 +1,23 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-/*public class PlayerCharacter : MonoBehaviour
+public class PlayerCharacter : Character
 {
 
     float Xp;
     Weapon equippedWeapon;
     Equipment equippedEquipment;
-    List<Equipment> equipmentList = new List<Equipment>();
-    List<Weapon> weaponList = new List<Weapon>();
+    [SerializeField] List<Equipment> equipmentList = new List<Equipment>();
+    [SerializeField] List<Weapon> weaponList = new List<Weapon>();
+
 
 
     void Start()
     {
         
+        equippedWeapon = weaponList[0];
+        equippedEquipment = equipmentList[0];
+
     }
 
     void Update()
@@ -33,4 +38,4 @@ using UnityEngine;
 
     }
 }
-*/
+

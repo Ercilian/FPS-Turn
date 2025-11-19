@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     [SerializeField] float baseDmg;
     [SerializeField] protected float baseDef;
 
-    protected int level;
+    protected int level = 1;
 
     void Start()
     {

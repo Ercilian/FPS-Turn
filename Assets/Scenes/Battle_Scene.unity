@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &55885953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
+  m_PrefabInstance: {fileID: 4005936400068853194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &63830381
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,12 +262,35 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7415359175889738737, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
   m_PrefabInstance: {fileID: 4005936400068853194}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 55885953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e754ff1b12fb604439c0f5e31a19d683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units
+--- !u!114 &83369868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55885953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2ca5b4473d2224e81127e6a32c77ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
+  name: Ellen
+  cur_HP: 0
+  max_HP: 150
+  baseDmg: 10
+  baseDef: 10
+  equipmentList:
+  - {fileID: 11400000, guid: 866e93751f5fffc44bc3b3df2a108277, type: 2}
+  - {fileID: 11400000, guid: 415416b0ccceafb46b9cf8c34f140e1a, type: 2}
+  weaponList:
+  - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
+  - {fileID: 11400000, guid: 6723db895ef714b4c909cdc5dfa69f8f, type: 2}
 --- !u!1 &176327794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,7 +4828,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 83369868}
   m_SourcePrefab: {fileID: 100100000, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

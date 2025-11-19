@@ -31,6 +31,7 @@ public class UnitSelection : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100f))
             {
                 Units unit = hit.collider.GetComponent<Units>();
+                
                 if (unit != null && unit.isPlayerUnit && !unit.hasActed)
                 {
                     SelectUnit(unit);

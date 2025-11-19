@@ -1,19 +1,15 @@
 using UnityEngine;
 
-/*[CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
+[CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon", order = 1)]
 public class Weapon : ScriptableObject
 {
 
+    [SerializeField] string weaponName;
     [SerializeField] float weaponDmg;
-    [SerializeField] float ArmorPen;
-    void Start()
-    {
-        
-    }
+    [SerializeField] float ArmourPen;
+    [SerializeField] int maxAmmo;
+    [SerializeField] int currentAmmo;
+    [SerializeField] float weaponRange;
 
-    void Update()
-    {
-        
-    }
 }
-+*/
+
