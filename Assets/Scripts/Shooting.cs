@@ -4,18 +4,22 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
-    public void Start()
+    public void Shoot(Vector3 enemyPosition, float weaponRange)
     {
-        Vector3 enemyPosition = new Vector3(0, 0, 0);
-        float weaponRange = 10f;
-        isOnLoS(enemyPosition, weaponRange);
+        if (isOnLoS(enemyPosition, weaponRange))
+        {
+            Debug.Log("Shooting at the enemy!");
+        }
+        else
+        {
+            Debug.Log("Enemy not in line of sight.");
+        }
     }
 
     public bool isOnLoS(Vector3 enemyPosition, float weaponRange)
     {
         RaycastHit hit;
-        Vector3 direction = (enemyPosition - transform.position).normalized;
-        if (Physics.Raycast(transform.position, direction, out hit, weaponRange))
+        if (Physics.Raycast(transform.position, enemyPosition, out hit, weaponRange))
         {
             Character character = hit.collider.GetComponent<Character>();
             if (character != null)
