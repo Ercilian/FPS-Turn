@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
         cur_HP = max_HP;
 
     }
-    void TakeDamage(float Dmg)
+    protected void TakeDamage(float Dmg)
     {
 
         float finalDmg = Dmg - baseDef;

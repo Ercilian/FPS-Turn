@@ -12,6 +12,7 @@ public class Units : MonoBehaviour
     
     Shooting Shooting;
     ClickToMove clickToMove;
+    [SerializeField] GameObject TargetSelection;
     public string CharacterName => characterName;
     public bool HasMoved => hasMoved;
     public bool HasAttacked => hasAttacked;
@@ -56,6 +57,7 @@ public class Units : MonoBehaviour
         {
             Shooting.enabled = true;
             Debug.Log(characterName + " ally is attacking.");
+            TargetSelection.SetActive(true);
         }
         else
         {

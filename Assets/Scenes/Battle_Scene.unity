@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2023657}
+  - component: {fileID: 2023658}
   m_Layer: 5
   m_Name: TargetButtons
   m_TagString: Untagged
@@ -156,6 +157,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2023658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3640e3185d31444482b33469aa4e492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TargetSelectionAttack
+  target_1: {fileID: 3668939989498234442}
+  target_2: {fileID: 422216710}
+  characterShooting: {fileID: 1413362331}
 --- !u!1 &55885953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
@@ -328,6 +344,18 @@ MonoBehaviour:
   weaponList:
   - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
   - {fileID: 11400000, guid: 6723db895ef714b4c909cdc5dfa69f8f, type: 2}
+--- !u!114 &83369874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55885953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f212e0186a0f24e943087deb7b2a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
 --- !u!1 &108795993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,8 +1493,19 @@ PrefabInstance:
     - {fileID: 4032462774897199179, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 678228435}
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 678228440}
   m_SourcePrefab: {fileID: 100100000, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+--- !u!1 &422216710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+  m_PrefabInstance: {fileID: 422216709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &487226315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1835,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 532643006}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2023658}
+        m_TargetAssemblyTypeName: TargetSelectionAttack, Assembly-CSharp
+        m_MethodName: ShootTarget1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &532643006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2098,12 +2149,41 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
   m_PrefabInstance: {fileID: 422216709}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 422216710}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e754ff1b12fb604439c0f5e31a19d683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units
+--- !u!114 &678228435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422216710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c79e3b2166d0842b83ba620cd6e7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
+  name: Grenadier 2
+  cur_HP: 0
+  max_HP: 100
+  baseDmg: 10
+  baseDef: 10
+--- !u!114 &678228440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422216710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f212e0186a0f24e943087deb7b2a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
 --- !u!1001 &690759399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3031,7 +3111,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
   m_PrefabInstance: {fileID: 3668939989498234441}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3668939989498234442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e754ff1b12fb604439c0f5e31a19d683, type: 3}
@@ -3119,7 +3199,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1002068268}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2023658}
+        m_TargetAssemblyTypeName: TargetSelectionAttack, Assembly-CSharp
+        m_MethodName: ShootTarget2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1002068268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3167,6 +3259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1020081958}
+  - component: {fileID: 1020081959}
   m_Layer: 5
   m_Name: TargetButtons
   m_TagString: Untagged
@@ -3195,6 +3288,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1020081959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020081957}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3640e3185d31444482b33469aa4e492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  target_1: {fileID: 3668939989498234442}
+  target_2: {fileID: 422216710}
+  characterShooting: {fileID: 55885953}
 --- !u!1 &1040421247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4326,6 +4434,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e613dc5f235ec4346b4cf70fbd58053f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrenadierEvents
+--- !u!114 &1413362338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413362331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2ca5b4473d2224e81127e6a32c77ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
+  name: 
+  cur_HP: 0
+  max_HP: 200
+  baseDmg: 5
+  baseDef: 20
+  equipmentList:
+  - {fileID: 11400000, guid: 866e93751f5fffc44bc3b3df2a108277, type: 2}
+  weaponList:
+  - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
+--- !u!114 &1413362344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413362331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f212e0186a0f24e943087deb7b2a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
 --- !u!1 &1648556558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,7 +4549,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1648556561}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1020081959}
+        m_TargetAssemblyTypeName: TargetSelectionAttack, Assembly-CSharp
+        m_MethodName: ShootTarget2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1648556561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5158,7 +5311,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1905439201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1020081959}
+        m_TargetAssemblyTypeName: TargetSelectionAttack, Assembly-CSharp
+        m_MethodName: ShootTarget1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1905439201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5455,6 +5620,10 @@ PrefabInstance:
       propertyPath: characterName
       value: Grenadier
       objectReference: {fileID: 0}
+    - target: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      propertyPath: TargetSelection
+      value: 
+      objectReference: {fileID: 2023656}
     - target: {fileID: 1512579729477548941, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: moveRange
       value: 10
@@ -5800,8 +5969,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1413362344}
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1413362337}
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1413362338}
   m_SourcePrefab: {fileID: 100100000, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
 --- !u!1001 &3668939989498234441
 PrefabInstance:
@@ -5867,8 +6042,48 @@ PrefabInstance:
     - {fileID: 4032462774897199179, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3668939989498234443}
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3668939989498234448}
   m_SourcePrefab: {fileID: 100100000, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+--- !u!1 &3668939989498234442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+  m_PrefabInstance: {fileID: 3668939989498234441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3668939989498234443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668939989498234442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c79e3b2166d0842b83ba620cd6e7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
+  name: Grenadier
+  cur_HP: 0
+  max_HP: 100
+  baseDmg: 10
+  baseDef: 10
+--- !u!114 &3668939989498234448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668939989498234442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f212e0186a0f24e943087deb7b2a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
 --- !u!1001 &4005936400068853194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5929,10 +6144,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7415359175889738737, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
+      propertyPath: TargetSelection
+      value: 
+      objectReference: {fileID: 1020081957}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 83369874}
     - targetCorrespondingSourceObject: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 83369868}
