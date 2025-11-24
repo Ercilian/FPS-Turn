@@ -4,10 +4,12 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
+    [SerializeField] ParticleSystem particleSparks;
     public void Shoot(Vector3 enemyPosition, float weaponRange)
     {
         if (isOnLoS(enemyPosition, weaponRange))
         {
+            particleSparks.Play();
             Debug.Log("Shooting at the enemy!");
         }
         else
