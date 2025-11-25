@@ -172,6 +172,7 @@ MonoBehaviour:
   target_1: {fileID: 3668939989498234442}
   target_2: {fileID: 422216710}
   characterShooting: {fileID: 1413362331}
+  Weapon: {fileID: 0}
 --- !u!1 &55885953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
@@ -338,12 +339,15 @@ MonoBehaviour:
   max_HP: 150
   baseDmg: 10
   baseDef: 10
+  equippedWeapon: {fileID: 0}
+  equippedEquipment: {fileID: 0}
   equipmentList:
-  - {fileID: 11400000, guid: 866e93751f5fffc44bc3b3df2a108277, type: 2}
   - {fileID: 11400000, guid: 415416b0ccceafb46b9cf8c34f140e1a, type: 2}
+  - {fileID: 11400000, guid: 866e93751f5fffc44bc3b3df2a108277, type: 2}
   weaponList:
-  - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
   - {fileID: 11400000, guid: 6723db895ef714b4c909cdc5dfa69f8f, type: 2}
+  - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
+  targetSelectionPanel: {fileID: 1020081957}
 --- !u!114 &83369874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f212e0186a0f24e943087deb7b2a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooting
-  particleSparks: {fileID: 0}
+  particleSparks: {fileID: 1716447099}
 --- !u!1 &108795993
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Grenadier 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -441,10 +445,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 22.6
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1444,7 +1448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: characterName
-      value: Grenadier
+      value: Grenadier 2
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_Name
@@ -1452,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.84428596
+      value: 10.844286
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1460,7 +1464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.32839
+      value: 6.17161
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1790,8 +1794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55, y: 44}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: -85, y: 44}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532643005
 MonoBehaviour:
@@ -2583,7 +2587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Grenadier 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2610,10 +2614,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 22.6
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3155,8 +3159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55, y: 44}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: 85, y: 44}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1002068267
 MonoBehaviour:
@@ -3297,7 +3301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020081957}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3640e3185d31444482b33469aa4e492, type: 3}
   m_Name: 
@@ -3305,6 +3309,7 @@ MonoBehaviour:
   target_1: {fileID: 3668939989498234442}
   target_2: {fileID: 422216710}
   characterShooting: {fileID: 55885953}
+  Weapon: {fileID: 0}
 --- !u!1 &1040421247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4448,15 +4453,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2ca5b4473d2224e81127e6a32c77ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
-  name: 
+  name: Grenadier Ally
   cur_HP: 0
   max_HP: 200
   baseDmg: 5
   baseDef: 20
+  equippedWeapon: {fileID: 0}
+  equippedEquipment: {fileID: 0}
   equipmentList:
   - {fileID: 11400000, guid: 866e93751f5fffc44bc3b3df2a108277, type: 2}
   weaponList:
   - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
+  targetSelectionPanel: {fileID: 2023656}
 --- !u!114 &1413362344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4469,7 +4477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f212e0186a0f24e943087deb7b2a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooting
-  particleSparks: {fileID: 0}
+  particleSparks: {fileID: 1716447099}
 --- !u!1 &1648556558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4506,8 +4514,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55, y: 44}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: 85, y: 44}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648556560
 MonoBehaviour:
@@ -9640,7 +9648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Grenadier 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9667,10 +9675,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 22.6
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -10114,8 +10122,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55, y: 44}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: -85, y: 44}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1905439200
 MonoBehaviour:
@@ -10299,7 +10307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Grenadier 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10326,10 +10334,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 22.6
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -15677,7 +15685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: characterName
-      value: Grenadier
+      value: Grenadier 1
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_Name
@@ -15685,7 +15693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.84428596
+      value: -6.155714
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15693,7 +15701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.32839
+      value: -4.82839
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalRotation.w

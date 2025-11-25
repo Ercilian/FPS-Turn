@@ -17,4 +17,4 @@ MonoBehaviour:
   ArmourPen: 30
   maxAmmo: 2
   currentAmmo: 2
-  weaponRange: 0
+  weaponRange: 30

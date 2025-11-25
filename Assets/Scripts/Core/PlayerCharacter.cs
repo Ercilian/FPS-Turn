@@ -5,16 +5,20 @@ public class PlayerCharacter : Character
 {
 
     float Xp;
-    Weapon equippedWeapon;
-    Equipment equippedEquipment;
+    [SerializeField] Weapon equippedWeapon;
+    [SerializeField] Equipment equippedEquipment;
     [SerializeField] List<Equipment> equipmentList = new List<Equipment>();
     [SerializeField] List<Weapon> weaponList = new List<Weapon>();
+    public GameObject targetSelectionPanel;
+            
+    public Weapon EquippedWeapon => equippedWeapon;
+
 
 
 
     void Start()
     {
-        
+        targetSelectionPanel.SetActive(false);
         equippedWeapon = weaponList[0];
         equippedEquipment = equipmentList[0];
 

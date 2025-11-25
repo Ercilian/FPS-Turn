@@ -10,6 +10,7 @@ public class Weapon : ScriptableObject
     [SerializeField] int maxAmmo;
     [SerializeField] int currentAmmo;
     [SerializeField] float weaponRange;
+    public float WeaponRange => weaponRange;
 
 }
 

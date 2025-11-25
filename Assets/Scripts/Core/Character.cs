@@ -27,6 +27,7 @@ public class Character : MonoBehaviour
         IsAlive();
 
     }
+    
 
     void IsAlive()
     {

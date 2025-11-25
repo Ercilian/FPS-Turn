@@ -8,6 +8,7 @@ public class UISelectedUnit : MonoBehaviour
     [SerializeField] GameObject panel;
     Units lastSelectedUnit;
 
+
     void Update()
     {
         var selectedUnit = UnitSelection.Instance.selectedUnit;

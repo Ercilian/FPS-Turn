@@ -12,7 +12,8 @@ public class Units : MonoBehaviour
     
     Shooting Shooting;
     ClickToMove clickToMove;
-    [SerializeField] GameObject TargetSelection;
+    PlayerCharacter playerCharacter;
+    
     public string CharacterName => characterName;
     public bool HasMoved => hasMoved;
     public bool HasAttacked => hasAttacked;
@@ -22,6 +23,7 @@ public class Units : MonoBehaviour
     {
         clickToMove = GetComponent<ClickToMove>();
         Shooting = GetComponent<Shooting>();
+        playerCharacter = GetComponent<PlayerCharacter>();
         
         Shooting.enabled = false;
         clickToMove.enabled = false;
@@ -55,16 +57,15 @@ public class Units : MonoBehaviour
 
         if (isPlayerUnit)
         {
+            playerCharacter.targetSelectionPanel.SetActive(true);
             Shooting.enabled = true;
-            Debug.Log(characterName + " ally is attacking.");
-            TargetSelection.SetActive(true);
+            Debug.Log(characterName + " ally is selecting a target.");
         }
         else
         {
-            Debug.Log(characterName + " an enemy unit is attacking.");
+            Debug.Log(characterName + " an enemy unit is selecting a target.");
         }
         
-        FinishAttack();
     }
 
     public void PassTurn()
@@ -95,6 +96,10 @@ public class Units : MonoBehaviour
 
     public void FinishAttack()
     {
+        if (isPlayerUnit)
+        {
+            playerCharacter.targetSelectionPanel.SetActive(false);
+        }
         hasAttacked = true;
         CheckIfFinishTurn();
     }
