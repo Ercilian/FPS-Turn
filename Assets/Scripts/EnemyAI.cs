@@ -11,12 +11,14 @@ public class EnemyAI : MonoBehaviour
     private Units units;
     private Shooting shooting;
     [SerializeField] private float visionRange = 15f;
-    private float attackRange;
+    private float weaponRange;
+    UnityEngine.AI.NavMeshAgent agent;
 
     void Awake()
     {
         units = GetComponent<Units>();
         shooting = GetComponent<Shooting>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     void Start()
@@ -54,11 +56,23 @@ public class EnemyAI : MonoBehaviour
 
 
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        if (distanceToTarget <= attackRange && hasLineOfSight(target))
+        if (distanceToTarget <= weaponRange && hasLineOfSight(target))
         {
             yield return AttackTarget(target);
         }
+        else
+        {
+            yield return MoveTowardsTarget(target.transform.position);
 
+            if (distanceToTarget <= weaponRange && hasLineOfSight(target))
+            {
+                yield return AttackTarget(target);
+            }
+            else
+            {
+                units.FinishAction();
+            }
+        }
 
     }
 
@@ -81,14 +95,40 @@ public class EnemyAI : MonoBehaviour
 
     private bool hasLineOfSight(Units target)
     {
-        return true;
+        return shooting.isOnLoS(target.transform.position, weaponRange);
     }
 
     private IEnumerator AttackTarget(Units target)
     {
-        return null;
+        Debug.Log(units.CharacterName + " is attacking " + target.CharacterName);
+
+        Vector3 lookAtPosition = target.transform.position - transform.position;
+        lookAtPosition.y = 0;
+        if (lookAtPosition != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(lookAtPosition);
+        }
+
+        shooting.Shoot(target.transform.position, weaponRange);
+
+        yield return new WaitForSeconds(0.5f);
+        
+        if(units.HasMoved)
+        {
+            units.FinishAction();
+            yield break;
+        }
+        units.FinishAttack();
     }
 
+    private IEnumerator MoveTowardsTarget(Vector3 targetPosition)
+    {
+        Debug.Log(units.CharacterName + " is moving towards the target.");
+
+        agent.destination = targetPosition;
+        yield return new WaitForSeconds(5f);
+        units.FinishMove();
+    }
     
 
 
