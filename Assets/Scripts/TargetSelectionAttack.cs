@@ -20,12 +20,12 @@ public class TargetSelectionAttack : MonoBehaviour
     public void ShootTarget1()
     {
         Debug.Log("Aiming at " + target_1.name + " with the weapon range: " + playerCharacter.EquippedWeapon.WeaponRange);
-        shootingComponent.Shoot(target_1.transform.position, playerCharacter.EquippedWeapon.WeaponRange);
+        shootingComponent.Shot(target_1.transform.position, playerCharacter.EquippedWeapon.WeaponRange);
     }
 
     public void ShootTarget2()
     {
         Debug.Log("Aiming at " + target_2.name + " with the weapon range: " + playerCharacter.EquippedWeapon.WeaponRange);
-        shootingComponent.Shoot(target_2.transform.position, playerCharacter.EquippedWeapon.WeaponRange);
+        shootingComponent.Shot(target_2.transform.position, playerCharacter.EquippedWeapon.WeaponRange);
     }
 }

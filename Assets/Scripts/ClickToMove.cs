@@ -23,25 +23,39 @@ public class ClickToMove : MonoBehaviour
         animator = GetComponent<Animator>();
         unit = GetComponent<Units>();
 
-        agent.destination = destinationDummie.position;
+        //agent.destination = destinationDummie.position;
         agent.updatePosition = false;
     }
 
     public void EnableMoveMode()
     {
+        if (agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+            if (agent == null)
+            {
+                Debug.LogError("NavMeshAgent not found on " + gameObject.name);
+                return;
+            }
+        }
         isSelectingDestination = true;
+        agent.ResetPath();
     }
 
     void Update()
     {
         if (isSelectingDestination && Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
         {
+            Debug.Log("Click detected, handling movement...");
             HandleClick();
             isSelectingDestination = false;
         }
 
+        Debug.Log($"Agent path: {agent.hasPath}, Remaining distance: {agent.remainingDistance}, HasMoved: {unit.HasMoved}");
+
         if (!unit.HasMoved && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && agent.hasPath)
         {
+            Debug.Log("Movement finished, calling FinishMove()");
             unit.FinishMove();
         }
 

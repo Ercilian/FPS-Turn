@@ -37,7 +37,6 @@ public class TurnManager : MonoBehaviour
         isPlayerTurn = false;
         ResetUnits(enemyUnits);
         Debug.Log("Enemy's Turn Started");
-        StartCoroutine(EnemyTurnDelay());
     }
 
     private void ResetUnits(List<Units> units)
@@ -75,9 +74,4 @@ public class TurnManager : MonoBehaviour
         }
     }
     
-    private IEnumerator EnemyTurnDelay()
-    {
-        yield return new WaitForSeconds(5f);
-        StartPlayerTurn();
-    }
 }

@@ -11,7 +11,11 @@ public class EnemyAI : MonoBehaviour
     private Units units;
     private Shooting shooting;
     [SerializeField] private float visionRange = 15f;
-    private float weaponRange;
+    [SerializeField] private float moveRange = 10f;
+    private bool isExecutingTurn = false;
+
+    [SerializeField] Weapon weapon;
+    EnemyCharacter enemyCharacter;
     UnityEngine.AI.NavMeshAgent agent;
 
     void Awake()
@@ -19,24 +23,22 @@ public class EnemyAI : MonoBehaviour
         units = GetComponent<Units>();
         shooting = GetComponent<Shooting>();
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        enemyCharacter = GetComponent<EnemyCharacter>();
     }
 
     void Start()
     {
-        
+        Debug.Log("The weaponRange is: " + enemyCharacter.EquippedWeapon.WeaponRange);
     }
     void Update()
     {  
         if (units.isPlayerUnit)
-        {
             return;
-        }
-        if(TurnManager.Instance.isPlayerTurn)
-        {
+        if (TurnManager.Instance.isPlayerTurn)
             return;
-        }
-        if (!units.HasActed)
+        if (!units.HasActed && !isExecutingTurn)
         {
+            isExecutingTurn = true;
             StartCoroutine(ExecuteEnemyTurn());
         }
         
@@ -47,16 +49,16 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         Units target = FindClosestPlayerUnit();
-        if (target != null)
-            {
-                Debug.Log(units.CharacterName + " didn't found any target: " + target.CharacterName);
-                units.FinishAction();
-                yield break;
-            }
-
+        if (target == null)
+        {
+            Debug.Log(units.CharacterName + " didn't found any target.");
+            units.FinishAction();
+            isExecutingTurn = false;
+            yield break;
+        }
 
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        if (distanceToTarget <= weaponRange && hasLineOfSight(target))
+        if (distanceToTarget <= enemyCharacter.EquippedWeapon.WeaponRange && hasLineOfSight(target))
         {
             yield return AttackTarget(target);
         }
@@ -64,16 +66,20 @@ public class EnemyAI : MonoBehaviour
         {
             yield return MoveTowardsTarget(target.transform.position);
 
-            if (distanceToTarget <= weaponRange && hasLineOfSight(target))
+            distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+            if (distanceToTarget <= enemyCharacter.EquippedWeapon.WeaponRange && hasLineOfSight(target))
             {
                 yield return AttackTarget(target);
             }
             else
             {
+                Debug.Log(units.CharacterName + " couldn't attack after moving.");
+                yield return new WaitForSeconds(1f);
                 units.FinishAction();
             }
         }
 
+        isExecutingTurn = false;
     }
 
     private Units FindClosestPlayerUnit()
@@ -95,7 +101,7 @@ public class EnemyAI : MonoBehaviour
 
     private bool hasLineOfSight(Units target)
     {
-        return shooting.isOnLoS(target.transform.position, weaponRange);
+        return shooting.isOnLoS(target.transform.position, enemyCharacter.EquippedWeapon.WeaponRange);
     }
 
     private IEnumerator AttackTarget(Units target)
@@ -109,24 +115,36 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(lookAtPosition);
         }
 
-        shooting.Shoot(target.transform.position, weaponRange);
+        shooting.Shot(target.transform.position, enemyCharacter.EquippedWeapon.WeaponRange);
 
         yield return new WaitForSeconds(0.5f);
         
-        if(units.HasMoved)
-        {
-            units.FinishAction();
-            yield break;
-        }
-        units.FinishAttack();
+
+        units.FinishAction();
+        Debug.Log(units.CharacterName + " finished attack.");
     }
 
     private IEnumerator MoveTowardsTarget(Vector3 targetPosition)
     {
-        Debug.Log(units.CharacterName + " is moving towards the target.");
+        Debug.Log(units.CharacterName + " is moving towards the target");
 
-        agent.destination = targetPosition;
-        yield return new WaitForSeconds(5f);
+        float weaponRange = enemyCharacter.EquippedWeapon.WeaponRange;
+        Vector3 direction = (targetPosition - transform.position).normalized; 
+        float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
+
+        float desiredDistance = Mathf.Max(distanceToTarget - weaponRange + 2f, 0f);
+        float moveDistance = Mathf.Min(desiredDistance, moveRange);
+
+        Vector3 destination = transform.position + direction * moveDistance;
+        agent.destination = destination;
+
+        while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Enemy reached destination.");
+        yield return new WaitForSeconds(1f);
         units.FinishMove();
     }
     

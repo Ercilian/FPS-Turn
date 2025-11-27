@@ -11,17 +11,17 @@ public class Shooting : MonoBehaviour
     {
         Units = GetComponent<Units>();
     }
-    public void Shoot(Vector3 enemyPosition, float weaponRange)
+    public void Shot(Vector3 enemyPosition, float weaponRange)
     {
         if (isOnLoS(enemyPosition, weaponRange))
         {
             particleSparks.Play();
-            Debug.Log("Shooting at the enemy!");
+            Debug.Log(Units.CharacterName + " is shooting");
             Units.FinishAttack();
         }
         else
         {
-            Debug.Log("Enemy not in line of sight.");
+            Debug.Log(Units.CharacterName + " enemy not in line of sight.");
         }
     }
 
@@ -42,5 +42,5 @@ public class Shooting : MonoBehaviour
         }
         return false;
     }
-    
+
 }

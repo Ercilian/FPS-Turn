@@ -7,12 +7,13 @@ public class Units : MonoBehaviour
     [SerializeField] string characterName;
     public bool hasActed = true;
     bool hasAttacked = false;
-    bool hasMoved = false;
+    [SerializeField] bool hasMoved = false;
     public bool isPlayerUnit;
     
     Shooting Shooting;
     ClickToMove clickToMove;
     PlayerCharacter playerCharacter;
+    public float rangopuesto = 10f;
     
     public string CharacterName => characterName;
     public bool HasMoved => hasMoved;
@@ -26,7 +27,15 @@ public class Units : MonoBehaviour
         playerCharacter = GetComponent<PlayerCharacter>();
         
         Shooting.enabled = false;
-        clickToMove.enabled = false;
+        if (isPlayerUnit)
+        {
+            clickToMove.enabled = false;
+        }
+    }
+
+    void Update()
+    {
+        Debug.DrawRay(transform.position, transform.forward * rangopuesto, Color.green);   
     }
 
 
@@ -73,8 +82,6 @@ public class Units : MonoBehaviour
         if (hasActed)
             return;
 
-        Debug.Log(characterName + " is passing the turn.");
-
         FinishAction();
     }
 
@@ -88,7 +95,10 @@ public class Units : MonoBehaviour
     public void FinishMove()
     {
         Debug.Log(characterName + " has finished moving.");
-        clickToMove.enabled = false;
+        if (isPlayerUnit)
+        {
+            clickToMove.enabled = false;
+        }
         hasMoved = true;
         Debug.Log("HasMoved set to true for " + characterName);
         CheckIfFinishTurn();
