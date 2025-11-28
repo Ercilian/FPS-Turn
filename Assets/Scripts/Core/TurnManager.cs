@@ -62,6 +62,17 @@ public class TurnManager : MonoBehaviour
 
     public void CheckEndTurn()
     {
+        if (enemyUnits.Count == 0)
+        {
+            WinBattle();
+            return;
+        }
+        if (playerUnits.Count == 0)
+        {
+            LoseBattle();
+            return;
+        }
+
         if (isPlayerTurn)
         {
             if (!AllUnitsActed(playerUnits))
@@ -72,6 +83,17 @@ public class TurnManager : MonoBehaviour
             if (!AllUnitsActed(enemyUnits))
                 StartPlayerTurn();
         }
+    }
+
+    public void WinBattle()
+    {
+        turnBanner.Show("YOU WIN!");
+
+    }
+
+    public void LoseBattle()
+    {
+        turnBanner.Show("YOU LOSE!");
     }
     
 }
