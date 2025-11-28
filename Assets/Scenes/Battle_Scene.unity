@@ -334,11 +334,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2ca5b4473d2224e81127e6a32c77ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
-  name: Ellen
+  characterName: 
   cur_HP: 0
   max_HP: 150
-  baseDmg: 10
-  baseDef: 10
+  defByEquipment: 0
+  Animator: {fileID: 83369882}
   equippedWeapon: {fileID: 0}
   equippedEquipment: {fileID: 0}
   equipmentList:
@@ -364,6 +364,11 @@ MonoBehaviour:
 --- !u!4 &83369879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2265650711510819743, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
+  m_PrefabInstance: {fileID: 4005936400068853194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &83369882 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2265650711500967385, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
   m_PrefabInstance: {fileID: 4005936400068853194}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &108795993
@@ -1448,6 +1453,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      propertyPath: rangopuesto
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: isPlayerUnit
       value: 0
       objectReference: {fileID: 0}
@@ -1477,7 +1486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.82839
+      value: -11.828392
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1485,15 +1494,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1515,6 +1524,9 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 476593091}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 678228449}
     - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 678228435}
@@ -1763,8 +1775,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 25
+      minMaxState: 0
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2266,7 +2278,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 31.9, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -2403,7 +2415,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 0
       mode: 0
       spread: 0
       speed:
@@ -2571,7 +2583,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -2904,7 +2916,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -3095,7 +3107,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -7031,8 +7043,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 25
+      minMaxState: 0
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -7534,7 +7546,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 31.9, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -7671,7 +7683,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 0
       mode: 0
       spread: 0
       speed:
@@ -7839,7 +7851,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -8172,7 +8184,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -8363,7 +8375,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -11883,11 +11895,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c79e3b2166d0842b83ba620cd6e7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
-  name: Grenadier 2
+  characterName: 
   cur_HP: 0
   max_HP: 100
-  baseDmg: 10
-  baseDef: 10
+  defByEquipment: 0
+  Animator: {fileID: 678228448}
   equippedWeapon: {fileID: 11400000, guid: 6723db895ef714b4c909cdc5dfa69f8f, type: 2}
   equippedEquipment: {fileID: 11400000, guid: 415416b0ccceafb46b9cf8c34f140e1a, type: 2}
 --- !u!114 &678228440
@@ -11923,6 +11935,23 @@ MonoBehaviour:
   visionRange: 40
   moveRange: 10
   weapon: {fileID: 0}
+--- !u!95 &678228448 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8854787437332966451, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+  m_PrefabInstance: {fileID: 422216709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &678228449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422216710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e613dc5f235ec4346b4cf70fbd58053f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrenadierEvents
 --- !u!1001 &690759399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19022,11 +19051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2ca5b4473d2224e81127e6a32c77ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
-  name: Grenadier Ally
+  characterName: 
   cur_HP: 0
   max_HP: 200
-  baseDmg: 5
-  baseDef: 20
+  defByEquipment: 0
+  Animator: {fileID: 1413362353}
   equippedWeapon: {fileID: 0}
   equippedEquipment: {fileID: 0}
   equipmentList:
@@ -19050,6 +19079,11 @@ MonoBehaviour:
 --- !u!4 &1413362349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+  m_PrefabInstance: {fileID: 3621212002918408948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1413362353 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8854787437332966451, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
   m_PrefabInstance: {fileID: 3621212002918408948}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1497280417
@@ -24041,8 +24075,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 25
+      minMaxState: 0
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -24544,7 +24578,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 31.9, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -24681,7 +24715,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 0
       mode: 0
       spread: 0
       speed:
@@ -24849,7 +24883,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -25182,7 +25216,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -25373,7 +25407,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -29234,8 +29268,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 25
+      minMaxState: 0
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -29737,7 +29771,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 31.9, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -29874,7 +29908,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 0
       mode: 0
       spread: 0
       speed:
@@ -30042,7 +30076,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -30375,7 +30409,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -30566,7 +30600,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -44762,10 +44796,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       insertIndex: 4
-      addedObject: {fileID: 1413362344}
-    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1413362337}
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1413362344}
     - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1413362338}
@@ -44851,6 +44885,9 @@ PrefabInstance:
       addedObject: {fileID: 672060592}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 3668939989498234458}
+    - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3668939989498234443}
     - targetCorrespondingSourceObject: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
@@ -44877,11 +44914,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c79e3b2166d0842b83ba620cd6e7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
-  name: Grenadier
+  characterName: 
   cur_HP: 0
   max_HP: 100
-  baseDmg: 10
-  baseDef: 10
+  defByEquipment: 0
+  Animator: {fileID: 3668939989498234457}
   equippedWeapon: {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
   equippedEquipment: {fileID: 11400000, guid: 866e93751f5fffc44bc3b3df2a108277, type: 2}
 --- !u!114 &3668939989498234448
@@ -44917,6 +44954,23 @@ MonoBehaviour:
   visionRange: 100
   moveRange: 5
   weapon: {fileID: 0}
+--- !u!95 &3668939989498234457 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8854787437332966451, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+  m_PrefabInstance: {fileID: 3668939989498234441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3668939989498234458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668939989498234442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e613dc5f235ec4346b4cf70fbd58053f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrenadierEvents
 --- !u!1001 &4005936400068853194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44976,6 +45030,10 @@ PrefabInstance:
     - target: {fileID: 2265650711510819743, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415359175889738737, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
+      propertyPath: rangopuesto
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7415359175889738737, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
       propertyPath: TargetSelection

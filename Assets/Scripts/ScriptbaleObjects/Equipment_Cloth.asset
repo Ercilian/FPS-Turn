@@ -15,4 +15,4 @@ MonoBehaviour:
   maxDurability: 30
   cur_Durability: 30
   movementSpeed: 130
-  Armour: 30
+  armour: 10

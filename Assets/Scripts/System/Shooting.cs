@@ -11,12 +11,16 @@ public class Shooting : MonoBehaviour
     {
         Units = GetComponent<Units>();
     }
-    public void Shot(Vector3 enemyPosition, float weaponRange)
+    public void Shot(Vector3 enemyPosition, float weaponRange, float weaponDmg)
     {
-        if (isOnLoS(enemyPosition, weaponRange))
+        Character target = isOnLoS(enemyPosition, weaponRange);
+        if (target != null)
         {
+            Vector3 direction = (enemyPosition - particleSparks.transform.position).normalized;
+            particleSparks.transform.rotation = Quaternion.LookRotation(direction);
+
             particleSparks.Play();
-            Debug.Log(Units.CharacterName + " is shooting");
+            target.TakeDamage(weaponDmg);
             Units.FinishAttack();
         }
         else
@@ -25,7 +29,7 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    public bool isOnLoS(Vector3 enemyPosition, float weaponRange)
+    public Character isOnLoS(Vector3 enemyPosition, float weaponRange)
     {
         RaycastHit hit;
         Vector3 direction = (enemyPosition - transform.position).normalized;
@@ -37,10 +41,10 @@ public class Shooting : MonoBehaviour
             Character character = hit.collider.GetComponent<Character>();
             if (character != null)
             {
-                return true;
+                return character;
             }
         }
-        return false;
+        return null;
     }
 
 }

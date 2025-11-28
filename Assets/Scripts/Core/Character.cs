@@ -1,43 +1,54 @@
+using System.Collections;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
 
     [Header("Character Stats")]
-    [SerializeField] string name;
+    [SerializeField] string characterName;
     [SerializeField] float cur_HP;
     [SerializeField] float max_HP;
-    [SerializeField] float baseDmg;
-    [SerializeField] protected float baseDef;
+    [SerializeField] protected float defByEquipment;
+    public Animator Animator;
 
     protected int level = 1;
+    private bool isDead = false;
 
-    void Start()
+    protected virtual void Start()
     {
 
-        name = gameObject.name;
+        characterName = gameObject.name;
         cur_HP = max_HP;
-
     }
-    protected void TakeDamage(float Dmg)
+    public void TakeDamage(float Dmg)
     {
 
-        float finalDmg = Dmg - baseDef;
+        float finalDmg = Dmg - defByEquipment;
+        Debug.Log(characterName + " is taking " + Dmg + " damage minus " + defByEquipment + " armour.");
         cur_HP -= finalDmg;
+        Debug.Log(characterName + " took " + finalDmg + " damage. Current HP: " + cur_HP + "/" + max_HP);
+        
         IsAlive();
 
     }
     
-
-    void IsAlive()
+    public void IsAlive()
     {
 
-        if (cur_HP <= 0)
+        if (cur_HP <= 0 && !isDead)
         {
-            Debug.Log(name + " has been defeated.");
-            Destroy(gameObject);
+            isDead = true;
+            Animator.SetBool("IsDead", true);
+            Debug.Log(characterName + " has been defeated.");
+            StartCoroutine(DeathRoutine());
         }
 
+    }
+
+    IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 
 

@@ -7,6 +7,7 @@ public class Equipment : ScriptableObject
     [SerializeField] float maxDurability;
     [SerializeField] float cur_Durability;
     [SerializeField] float movementSpeed;
-    [SerializeField] float Armour;
+    [SerializeField] float armour;
 
+    public float Armour => armour;
 }

@@ -41,7 +41,6 @@ public class UnitSelection : MonoBehaviour
                 else
                 {
                     DeselectUnit();
-                    Debug.Log("No unit found at clicked position."); 
                 }
             }
         }
@@ -56,6 +55,11 @@ public class UnitSelection : MonoBehaviour
     {
         if (selectedUnit != null)
         {
+            var playerChar = selectedUnit.GetComponent<PlayerCharacter>();
+            if (playerChar != null && playerChar.targetSelectionPanel != null)
+            {
+                playerChar.targetSelectionPanel.SetActive(false);
+            }
             Debug.Log("Unit Deselected: " + selectedUnit.name);
             selectedUnit = null;
         }

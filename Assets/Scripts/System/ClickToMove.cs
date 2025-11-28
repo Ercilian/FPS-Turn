@@ -51,11 +51,9 @@ public class ClickToMove : MonoBehaviour
             isSelectingDestination = false;
         }
 
-        Debug.Log($"Agent path: {agent.hasPath}, Remaining distance: {agent.remainingDistance}, HasMoved: {unit.HasMoved}");
 
         if (!unit.HasMoved && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && agent.hasPath)
         {
-            Debug.Log("Movement finished, calling FinishMove()");
             unit.FinishMove();
         }
 

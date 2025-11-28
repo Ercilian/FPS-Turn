@@ -15,4 +15,4 @@ MonoBehaviour:
   maxDurability: 0
   cur_Durability: 0
   movementSpeed: 0
-  Armour: 0
+  armour: 25

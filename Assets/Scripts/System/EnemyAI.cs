@@ -26,10 +26,6 @@ public class EnemyAI : MonoBehaviour
         enemyCharacter = GetComponent<EnemyCharacter>();
     }
 
-    void Start()
-    {
-        Debug.Log("The weaponRange is: " + enemyCharacter.EquippedWeapon.WeaponRange);
-    }
     void Update()
     {  
         if (units.isPlayerUnit)
@@ -42,6 +38,17 @@ public class EnemyAI : MonoBehaviour
             StartCoroutine(ExecuteEnemyTurn());
         }
         
+        if (agent != null && !units.isPlayerUnit)
+        {
+            Animator animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                if (agent.remainingDistance > agent.stoppingDistance)
+                    animator.SetFloat("forwardMovement", agent.velocity.magnitude);
+                else
+                    animator.SetFloat("forwardMovement", 0f);
+            }
+        }
     }
 
     IEnumerator ExecuteEnemyTurn()
@@ -115,7 +122,7 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(lookAtPosition);
         }
 
-        shooting.Shot(target.transform.position, enemyCharacter.EquippedWeapon.WeaponRange);
+        shooting.Shot(target.transform.position, enemyCharacter.EquippedWeapon.WeaponRange, enemyCharacter.EquippedWeapon.WeaponDmg);
 
         yield return new WaitForSeconds(0.5f);
         

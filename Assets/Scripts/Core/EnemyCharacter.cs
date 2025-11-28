@@ -8,13 +8,10 @@ public class EnemyCharacter : Character
 
     public Weapon EquippedWeapon => equippedWeapon;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         
-    }
-
-    void Update()
-    {
-        
+        defByEquipment = equippedEquipment.Armour;
     }
 }

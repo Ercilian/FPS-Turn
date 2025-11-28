@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_Hand Gun
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   weaponName: Hand Gun
-  weaponDmg: 60
+  weaponDmg: 20
   ArmourPen: 10
   maxAmmo: 4
   currentAmmo: 4

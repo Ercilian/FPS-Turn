@@ -15,6 +15,7 @@ public class Units : MonoBehaviour
     PlayerCharacter playerCharacter;
     public float rangopuesto = 10f;
     
+    
     public string CharacterName => characterName;
     public bool HasMoved => hasMoved;
     public bool HasAttacked => hasAttacked;
@@ -100,12 +101,12 @@ public class Units : MonoBehaviour
             clickToMove.enabled = false;
         }
         hasMoved = true;
-        Debug.Log("HasMoved set to true for " + characterName);
         CheckIfFinishTurn();
     }
 
     public void FinishAttack()
     {
+        Debug.Log(characterName + " has finished attacking.");
         if (isPlayerUnit)
         {
             playerCharacter.targetSelectionPanel.SetActive(false);
@@ -116,6 +117,10 @@ public class Units : MonoBehaviour
     
     public void FinishAction()
     {
+        if (isPlayerUnit)
+        {
+            UnitSelection.Instance.DeselectUnit();
+        }
         hasActed = true;
         Debug.Log(characterName + " has finished its turn.");
         TurnManager.Instance.CheckEndTurn();

@@ -16,11 +16,14 @@ public class PlayerCharacter : Character
 
 
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         targetSelectionPanel.SetActive(false);
         equippedWeapon = weaponList[0];
         equippedEquipment = equipmentList[0];
+
+        defByEquipment = equippedEquipment.Armour;
 
     }
 
