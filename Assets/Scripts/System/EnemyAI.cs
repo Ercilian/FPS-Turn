@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     EnemyCharacter enemyCharacter;
     UnityEngine.AI.NavMeshAgent agent;
 
+    [SerializeField] LineRenderer lineRenderer;
+
     void Awake()
     {
         units = GetComponent<Units>();
@@ -143,12 +145,24 @@ public class EnemyAI : MonoBehaviour
         float moveDistance = Mathf.Min(desiredDistance, moveRange);
 
         Vector3 destination = transform.position + direction * moveDistance;
+
+        UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
+        agent.CalculatePath(destination, path);
+        if (path.corners.Length > 1 && lineRenderer != null)
+        {
+            lineRenderer.positionCount = path.corners.Length;
+            lineRenderer.SetPositions(path.corners);
+        }
+
         agent.destination = destination;
 
         while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
         {
             yield return null;
         }
+
+        if (lineRenderer != null)
+            lineRenderer.positionCount = 0;
 
         Debug.Log("Enemy reached destination.");
         yield return new WaitForSeconds(1f);

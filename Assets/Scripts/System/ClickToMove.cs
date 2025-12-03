@@ -11,6 +11,8 @@ public class ClickToMove : MonoBehaviour
     Vector3 destination;
     Rigidbody rb;
 
+    [SerializeField] LineRenderer lineRenderer;
+
     private NavMeshAgent agent;
     Animator animator;
     Units unit;
@@ -23,7 +25,6 @@ public class ClickToMove : MonoBehaviour
         animator = GetComponent<Animator>();
         unit = GetComponent<Units>();
 
-        //agent.destination = destinationDummie.position;
         agent.updatePosition = false;
     }
 
@@ -44,11 +45,36 @@ public class ClickToMove : MonoBehaviour
 
     void Update()
     {
-        if (isSelectingDestination && Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
+        if (isSelectingDestination && Mouse.current != null)
         {
-            Debug.Log("Click detected, handling movement...");
-            HandleClick();
-            isSelectingDestination = false;
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                float distance = Vector3.Distance(transform.position, hit.point);
+                if (distance <= moveRange)
+                {
+                    NavMeshPath path = new NavMeshPath();
+                    agent.CalculatePath(hit.point, path);
+
+                    if (path.corners.Length > 1)
+                    {
+                        lineRenderer.positionCount = path.corners.Length;
+                        lineRenderer.SetPositions(path.corners);
+                    }
+                }
+                else
+                {
+                    lineRenderer.positionCount = 0;
+                }
+            }
+
+            if (Mouse.current.rightButton.wasPressedThisFrame)
+            {
+                HandleClick();
+                isSelectingDestination = false;
+                lineRenderer.positionCount = 0;
+            }
         }
 
 
