@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class TargetSelectionAttack : MonoBehaviour
     [SerializeField] GameObject characterShooting;
     [SerializeField] Button attackButton1;
     [SerializeField] Button attackButton2;
+    [SerializeField] TMP_Text percentText1;
+    [SerializeField] TMP_Text percentText2;
 
     Shooting shootingComponent;
     PlayerCharacter playerCharacter;
@@ -39,5 +42,10 @@ public class TargetSelectionAttack : MonoBehaviour
         float range = playerCharacter.EquippedWeapon.WeaponRange;
         attackButton1.interactable = shootingComponent.isOnLoS(target_1.transform.position, range) != null;
         attackButton2.interactable = shootingComponent.isOnLoS(target_2.transform.position, range) != null;
+        float percent1 = shootingComponent.GetHitChance(target_1.transform.position, range) * 100f;
+        float percent2 = shootingComponent.GetHitChance(target_2.transform.position, range) * 100f;
+
+        percentText1.text = percent1.ToString("F0") + "%";
+        percentText2.text = percent2.ToString("F0") + "%";
     }
 }

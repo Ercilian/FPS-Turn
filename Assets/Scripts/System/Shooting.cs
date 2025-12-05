@@ -100,4 +100,35 @@ public class Shooting : MonoBehaviour
         }
         return null;
     }
+
+    public float GetHitChance(Vector3 enemyPosition, float weaponRange)
+    {
+        float distance = Vector3.Distance(transform.position, enemyPosition);
+        float rangeStep = weaponRange / 3f;
+        float hitChance = 1f;
+
+        if (Units.isPlayerUnit)
+        {
+            if (distance <= rangeStep)
+                hitChance = shortRangeHitChance;
+            else if (distance <= rangeStep * 2f)
+                hitChance = midRangeHitChance;
+            else
+                hitChance = longRangeHitChance;
+        }
+        else
+        {
+            if (distance <= rangeStep)
+                hitChance = shortRangeHitChance;
+            else if (distance <= rangeStep * 2f)
+                hitChance = midRangeHitChance;
+            else
+                hitChance = longRangeHitChance;
+        }
+
+        if (isOnLoS(enemyPosition, weaponRange) == null)
+            return 0f;
+
+        return hitChance;
+    }
 }
