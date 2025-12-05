@@ -50,14 +50,7 @@ public class Units : MonoBehaviour
             clickToMove.EnableMoveMode();
             clickToMove.destinationDummie.position = transform.position;
             clickToMove.enabled = true;
-            Debug.Log(characterName + " is moving.");
-            
         }
-        else
-        {
-            Debug.Log(characterName + " an enemy unit is moving.");
-        }
-        
     }
 
     public void Attack()
@@ -79,12 +72,8 @@ public class Units : MonoBehaviour
             }
 
             Shooting.enabled = true;
-            Debug.Log(characterName + " ally is selecting a target.");
         }
-        else
-        {
-            Debug.Log(characterName + " an enemy unit is selecting a target.");
-        }
+
         
     }
 
@@ -105,7 +94,6 @@ public class Units : MonoBehaviour
 
     public void FinishMove()
     {
-        Debug.Log(characterName + " has finished moving.");
         if (isPlayerUnit)
         {
             clickToMove.enabled = false;
@@ -125,7 +113,6 @@ public class Units : MonoBehaviour
 
     public void FinishAttack()
     {
-        Debug.Log(characterName + " has finished attacking.");
         if (isPlayerUnit)
         {
             playerCharacter.targetSelectionPanel.SetActive(false);
@@ -141,7 +128,6 @@ public class Units : MonoBehaviour
             UnitSelection.Instance.DeselectUnit();
         }
         hasActed = true;
-        Debug.Log(characterName + " has finished its turn.");
         TurnManager.Instance.CheckEndTurn();
         
     }

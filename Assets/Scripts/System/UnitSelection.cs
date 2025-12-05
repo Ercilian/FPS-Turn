@@ -35,8 +35,6 @@ public class UnitSelection : MonoBehaviour
                 if (unit != null && unit.isPlayerUnit && !unit.hasActed)
                 {
                     SelectUnit(unit);
-                    Debug.Log("Unit Selected: " + unit.name);
-                    // Aquí puedes agregar lógica adicional para seleccionar la unidad
                 }
                 else
                 {
@@ -60,7 +58,6 @@ public class UnitSelection : MonoBehaviour
             {
                 playerChar.targetSelectionPanel.SetActive(false);
             }
-            Debug.Log("Unit Deselected: " + selectedUnit.name);
             selectedUnit = null;
         }
     }

@@ -24,7 +24,6 @@ public class Character : MonoBehaviour
     {
 
         float finalDmg = Dmg - defByEquipment;
-        Debug.Log(characterName + " is taking " + Dmg + " damage minus " + defByEquipment + " armour.");
         cur_HP -= finalDmg;
         Debug.Log(characterName + " took " + finalDmg + " damage. Current HP: " + cur_HP + "/" + max_HP);
         

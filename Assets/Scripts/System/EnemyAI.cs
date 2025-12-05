@@ -130,7 +130,6 @@ public class EnemyAI : MonoBehaviour
         
 
         units.FinishAction();
-        Debug.Log(units.CharacterName + " finished attack.");
     }
 
     private IEnumerator MoveTowardsTarget(Vector3 targetPosition)
@@ -164,7 +163,6 @@ public class EnemyAI : MonoBehaviour
         if (lineRenderer != null)
             lineRenderer.positionCount = 0;
 
-        Debug.Log("Enemy reached destination.");
         yield return new WaitForSeconds(1f);
         units.FinishMove();
     }
