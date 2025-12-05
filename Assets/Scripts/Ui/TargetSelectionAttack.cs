@@ -40,12 +40,29 @@ public class TargetSelectionAttack : MonoBehaviour
         PlayerCharacter playerCharacter = characterShooting.GetComponent<PlayerCharacter>();
 
         float range = playerCharacter.EquippedWeapon.WeaponRange;
-        attackButton1.interactable = shootingComponent.isOnLoS(target_1.transform.position, range) != null;
-        attackButton2.interactable = shootingComponent.isOnLoS(target_2.transform.position, range) != null;
-        float percent1 = shootingComponent.GetHitChance(target_1.transform.position, range) * 100f;
-        float percent2 = shootingComponent.GetHitChance(target_2.transform.position, range) * 100f;
 
-        percentText1.text = percent1.ToString("F0") + "%";
-        percentText2.text = percent2.ToString("F0") + "%";
+        if (target_1 == null)
+        {
+            attackButton1.interactable = false;
+            percentText1.text = "Eliminated";
+        }
+        else
+        {
+            attackButton1.interactable = shootingComponent.isOnLoS(target_1.transform.position, range) != null;
+            float percent1 = shootingComponent.GetHitChance(target_1.transform.position, range) * 100f;
+            percentText1.text = attackButton1.interactable ? percent1.ToString("F0") + "%" : "Out of range";
+        }
+
+        if (target_2 == null)
+        {
+            attackButton2.interactable = false;
+            percentText2.text = "Eliminated";
+        }
+        else
+        {
+            attackButton2.interactable = shootingComponent.isOnLoS(target_2.transform.position, range) != null;
+            float percent2 = shootingComponent.GetHitChance(target_2.transform.position, range) * 100f;
+            percentText2.text = attackButton2.interactable ? percent2.ToString("F0") + "%" : "Out of range";
+        }
     }
 }
