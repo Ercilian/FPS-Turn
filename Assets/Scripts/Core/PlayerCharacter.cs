@@ -10,6 +10,7 @@ public class PlayerCharacter : Character
     [SerializeField] List<Equipment> equipmentList = new List<Equipment>();
     [SerializeField] List<Weapon> weaponList = new List<Weapon>();
     public GameObject targetSelectionPanel;
+    public TargetSelectionAttack targetSelectionAttack;
             
     public Weapon EquippedWeapon => equippedWeapon;
 

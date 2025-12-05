@@ -67,7 +67,25 @@ public class Units : MonoBehaviour
 
         if (isPlayerUnit)
         {
-            playerCharacter.targetSelectionPanel.SetActive(true);
+            if (playerCharacter.targetSelectionPanel != null)
+            {
+                playerCharacter.targetSelectionPanel.SetActive(true);
+
+                var tsa = playerCharacter.targetSelectionPanel.GetComponent<TargetSelectionAttack>();
+                if (tsa != null)
+                {
+                    tsa.UpdateAttackButtons();
+                }
+                else
+                {
+                    Debug.LogWarning("TargetSelectionAttack no encontrado en el panel de selección.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("targetSelectionPanel no está asignado en PlayerCharacter.");
+            }
+
             Shooting.enabled = true;
             Debug.Log(characterName + " ally is selecting a target.");
         }
@@ -99,6 +117,15 @@ public class Units : MonoBehaviour
         if (isPlayerUnit)
         {
             clickToMove.enabled = false;
+
+            if (playerCharacter.targetSelectionPanel != null && playerCharacter.targetSelectionPanel.activeSelf)
+            {
+                var tsa = playerCharacter.targetSelectionPanel.GetComponent<TargetSelectionAttack>();
+                if (tsa != null)
+                {
+                    tsa.UpdateAttackButtons();
+                }
+            }
         }
         hasMoved = true;
         CheckIfFinishTurn();

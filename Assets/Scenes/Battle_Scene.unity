@@ -172,7 +172,8 @@ MonoBehaviour:
   target_1: {fileID: 3668939989498234442}
   target_2: {fileID: 422216710}
   characterShooting: {fileID: 1413362331}
-  Weapon: {fileID: 0}
+  attackButton1: {fileID: 532643005}
+  attackButton2: {fileID: 1002068267}
 --- !u!1 &55885953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
@@ -348,6 +349,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6723db895ef714b4c909cdc5dfa69f8f, type: 2}
   - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
   targetSelectionPanel: {fileID: 1020081957}
+  targetSelectionAttack: {fileID: 1020081959}
 --- !u!114 &83369874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18132,7 +18134,8 @@ MonoBehaviour:
   target_1: {fileID: 3668939989498234442}
   target_2: {fileID: 422216710}
   characterShooting: {fileID: 55885953}
-  Weapon: {fileID: 0}
+  attackButton1: {fileID: 1905439200}
+  attackButton2: {fileID: 1648556560}
 --- !u!1 &1040421247
 GameObject:
   m_ObjectHideFlags: 0
@@ -19288,6 +19291,7 @@ MonoBehaviour:
   weaponList:
   - {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
   targetSelectionPanel: {fileID: 2023656}
+  targetSelectionAttack: {fileID: 2023658}
 --- !u!114 &1413362344
 MonoBehaviour:
   m_ObjectHideFlags: 0
