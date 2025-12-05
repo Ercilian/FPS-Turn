@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
 
 public class Shooting : MonoBehaviour
 {
@@ -36,7 +37,6 @@ public class Shooting : MonoBehaviour
             }
             else
             {
-                // Para enemigos, usa el mismo porcentaje que los sliders
                 if (distance <= rangeStep)
                     hitChance = shortRangeHitChance;
                 else if (distance <= rangeStep * 2f)
@@ -65,6 +65,22 @@ public class Shooting : MonoBehaviour
         {
             Debug.Log(Units.CharacterName + " enemy not in line of sight.");
         }
+    }
+
+    public void ShotWithDelay(Vector3 enemyPosition, float weaponRange, float weaponDmg)
+    {
+        StartCoroutine(ShotCoroutine(enemyPosition, weaponRange, weaponDmg));
+    }
+
+    private IEnumerator ShotCoroutine(Vector3 enemyPosition, float weaponRange, float weaponDmg)
+    {
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+            animator.SetTrigger("Attacking");
+
+        yield return new WaitForSeconds(1f);
+
+        Shot(enemyPosition, weaponRange, weaponDmg);
     }
 
     public Character isOnLoS(Vector3 enemyPosition, float weaponRange)

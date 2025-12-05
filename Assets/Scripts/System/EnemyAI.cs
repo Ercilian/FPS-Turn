@@ -124,7 +124,7 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(lookAtPosition);
         }
 
-        shooting.Shot(target.transform.position, enemyCharacter.EquippedWeapon.WeaponRange, enemyCharacter.EquippedWeapon.WeaponDmg);
+        shooting.ShotWithDelay(target.transform.position, enemyCharacter.EquippedWeapon.WeaponRange, enemyCharacter.EquippedWeapon.WeaponDmg);
 
         yield return new WaitForSeconds(0.5f);
         

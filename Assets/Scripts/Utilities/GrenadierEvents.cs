@@ -8,4 +8,14 @@ public class GrenadierEvents : MonoBehaviour
     public void PlayStep()
     {
     }
+    public void StartAttack()
+    {
+    }
+    public void EndAttack()
+    {
+    }
+    public void Shoot()
+    {
+    }
 }
+    

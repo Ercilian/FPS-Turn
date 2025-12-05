@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
     }
     public void TakeDamage(float Dmg)
     {
-
+        Animator.SetTrigger("Hit");
         float finalDmg = Dmg - defByEquipment;
         cur_HP -= finalDmg;
         Debug.Log(characterName + " took " + finalDmg + " damage. Current HP: " + cur_HP + "/" + max_HP);

@@ -22,13 +22,13 @@ public class TargetSelectionAttack : MonoBehaviour
     public void ShootTarget1()
     {
         Debug.Log("Aiming at " + target_1.name + " with the weapon range: " + playerCharacter.EquippedWeapon.WeaponRange + " and damage: " + playerCharacter.EquippedWeapon.WeaponDmg);
-        shootingComponent.Shot(target_1.transform.position, playerCharacter.EquippedWeapon.WeaponRange, playerCharacter.EquippedWeapon.WeaponDmg);
+        shootingComponent.ShotWithDelay(target_1.transform.position, playerCharacter.EquippedWeapon.WeaponRange, playerCharacter.EquippedWeapon.WeaponDmg);
     }
 
     public void ShootTarget2()
     {
         Debug.Log("Aiming at " + target_2.name + " with the weapon range: " + playerCharacter.EquippedWeapon.WeaponRange + " and damage: " + playerCharacter.EquippedWeapon.WeaponDmg);
-        shootingComponent.Shot(target_2.transform.position, playerCharacter.EquippedWeapon.WeaponRange, playerCharacter.EquippedWeapon.WeaponDmg);
+        shootingComponent.ShotWithDelay(target_2.transform.position, playerCharacter.EquippedWeapon.WeaponRange, playerCharacter.EquippedWeapon.WeaponDmg);
     }
 
     public void UpdateAttackButtons()
