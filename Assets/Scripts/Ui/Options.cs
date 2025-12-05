@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Options : MonoBehaviour
 {
-
-    public GameObject OptionsPanel; // panel for options menu
-
+    public GameObject OptionsPanel;
 
     private void Start()
     {
@@ -15,33 +14,29 @@ public class Options : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && OptionsPanel.activeSelf)
+        var kb = Keyboard.current;
+        if (kb != null && kb.escapeKey.wasPressedThisFrame)
         {
-            Debug.Log("Cerrando opciones");
-            CloseSettings();
+            if (OptionsPanel.activeSelf)
+            {
+                CloseSettings();
+            }
+            else
+            {
+                OpenSettings();
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Abriendo opciones");
-            OpenSettings();
-        }
-
-
     }
 
     public void OpenSettings()
     {
         OptionsPanel.SetActive(true);
-        Time.timeScale = 0f; // Pause the game
+        Time.timeScale = 0f;
     }
 
     public void CloseSettings()
     {
         OptionsPanel.SetActive(false);
-        Time.timeScale = 1f; // Resume the game
+        Time.timeScale = 1f;
     }
-
-
-
-
 }
