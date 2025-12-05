@@ -1589,6 +1589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grenadier (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.155716
@@ -5351,7 +5355,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -10619,7 +10623,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -11988,17 +11992,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &678228434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
-  m_PrefabInstance: {fileID: 422216709}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422216710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e754ff1b12fb604439c0f5e31a19d683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Units
 --- !u!114 &678228435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17937,17 +17930,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960759389}
   m_CullTransparentMesh: 1
---- !u!114 &968279874 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 704919395857574090, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
-  m_PrefabInstance: {fileID: 3668939989498234441}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3668939989498234442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e754ff1b12fb604439c0f5e31a19d683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Units
 --- !u!1 &1002068265
 GameObject:
   m_ObjectHideFlags: 0
@@ -18585,7 +18567,7 @@ GameObject:
   - component: {fileID: 1154889094}
   - component: {fileID: 1154889095}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CANVAS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18735,12 +18717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07de40d559edd5e499fb2dd3658934ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnManager
-  enemyUnits:
-  - {fileID: 968279874}
-  - {fileID: 678228434}
+  enemyUnits: []
   playerUnits:
   - {fileID: 83369867}
-  - {fileID: 1309254038}
   turnBanner: {fileID: 176327795}
   isPlayerTurn: 1
 --- !u!4 &1227162441
@@ -27874,7 +27853,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -33067,7 +33046,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -44802,6 +44781,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grenadier Ally
       objectReference: {fileID: 0}
+    - target: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      propertyPath: m_TagString
+      value: Ally
+      objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633217, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.0000006891823
@@ -45182,6 +45165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grenadier
       objectReference: {fileID: 0}
+    - target: {fileID: 8854787437323608049, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8854787437323633617, guid: 9f239d6622622d54a8f349dcca0553f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.844284
@@ -45459,6 +45446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ellen
       objectReference: {fileID: 0}
+    - target: {fileID: 2265650711510466559, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
+      propertyPath: m_TagString
+      value: Ally
+      objectReference: {fileID: 0}
     - target: {fileID: 2265650711510819743, guid: 784ea94646c5b224cb91e96791e652d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9562147
@@ -45528,14 +45519,14 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 585719403}
+  - {fileID: 1227162441}
+  - {fileID: 1259407197}
   - {fileID: 1298677326}
   - {fileID: 1146678951}
   - {fileID: 176925675}
   - {fileID: 2138885650}
   - {fileID: 1154889093}
-  - {fileID: 585719403}
-  - {fileID: 1227162441}
-  - {fileID: 1259407197}
   - {fileID: 1779923875}
   - {fileID: 1931454504}
   - {fileID: 690759399}

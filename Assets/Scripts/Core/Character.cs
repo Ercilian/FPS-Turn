@@ -47,6 +47,11 @@ public class Character : MonoBehaviour
 
     IEnumerator DeathRoutine()
     {
+        Units units = GetComponent<Units>();
+        if (units != null)
+        {
+            TurnManager.Instance.RemoveUnit(units);
+        }
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }

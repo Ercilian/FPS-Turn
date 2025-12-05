@@ -76,14 +76,6 @@ public class Units : MonoBehaviour
                 {
                     tsa.UpdateAttackButtons();
                 }
-                else
-                {
-                    Debug.LogWarning("TargetSelectionAttack no encontrado en el panel de selección.");
-                }
-            }
-            else
-            {
-                Debug.LogWarning("targetSelectionPanel no está asignado en PlayerCharacter.");
             }
 
             Shooting.enabled = true;

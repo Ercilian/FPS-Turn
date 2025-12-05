@@ -16,6 +16,23 @@ public class TurnManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        playerUnits.Clear();
+        enemyUnits.Clear(); 
+
+        foreach (var go in GameObject.FindGameObjectsWithTag("Ally"))
+        {
+            Units unit = go.GetComponent<Units>();
+            if (unit != null)
+                playerUnits.Add(unit);
+        }
+
+        foreach (var go in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Units unit = go.GetComponent<Units>();
+            if (unit != null)
+                enemyUnits.Add(unit);
+        }
     }
 
     void Start()
@@ -95,5 +112,11 @@ public class TurnManager : MonoBehaviour
     {
         turnBanner.Show("YOU LOSE!");
     }
-    
+
+    public void RemoveUnit(Units unit)
+    {
+        playerUnits.Remove(unit);
+        enemyUnits.Remove(unit);
+        CheckEndTurn();
+    }
 }
