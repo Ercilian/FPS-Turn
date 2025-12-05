@@ -16,19 +16,27 @@ public class Character : MonoBehaviour
 
     protected virtual void Start()
     {
-
         characterName = gameObject.name;
         cur_HP = max_HP;
     }
+
     public void TakeDamage(float Dmg)
     {
         Animator.SetTrigger("Hit");
         float finalDmg = Dmg - defByEquipment;
         cur_HP -= finalDmg;
         Debug.Log(characterName + " took " + finalDmg + " damage. Current HP: " + cur_HP + "/" + max_HP);
-        
         IsAlive();
+    }
 
+    public void Heal(float healAmount)
+    {
+        cur_HP += healAmount;
+        if (cur_HP > max_HP)
+        {
+            cur_HP = max_HP;
+        }
+        Debug.Log(characterName + " healed " + healAmount + " HP. Current HP: " + cur_HP + "/" + max_HP);
     }
     
     public void IsAlive()
