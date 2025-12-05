@@ -339,6 +339,8 @@ MonoBehaviour:
   cur_HP: 0
   max_HP: 150
   defByEquipment: 0
+  HealthBar: {fileID: 0}
+  healthBarPrefab: {fileID: 1457011335362492320, guid: 262bbbf107ab9424c82a53703180cdb4, type: 3}
   Animator: {fileID: 83369882}
   equippedWeapon: {fileID: 0}
   equippedEquipment: {fileID: 0}
@@ -12147,6 +12149,8 @@ MonoBehaviour:
   cur_HP: 0
   max_HP: 100
   defByEquipment: 0
+  HealthBar: {fileID: 0}
+  healthBarPrefab: {fileID: 1457011335362492320, guid: 262bbbf107ab9424c82a53703180cdb4, type: 3}
   Animator: {fileID: 678228448}
   equippedWeapon: {fileID: 11400000, guid: 50403e83b4cebaf499d999e2c2afd080, type: 2}
   equippedEquipment: {fileID: 11400000, guid: 415416b0ccceafb46b9cf8c34f140e1a, type: 2}
@@ -18786,7 +18790,7 @@ GameObject:
   - component: {fileID: 1154889095}
   - component: {fileID: 1154889096}
   m_Layer: 5
-  m_Name: CANVAS
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19495,6 +19499,8 @@ MonoBehaviour:
   cur_HP: 0
   max_HP: 200
   defByEquipment: 0
+  HealthBar: {fileID: 0}
+  healthBarPrefab: {fileID: 1457011335362492320, guid: 262bbbf107ab9424c82a53703180cdb4, type: 3}
   Animator: {fileID: 1413362353}
   equippedWeapon: {fileID: 0}
   equippedEquipment: {fileID: 0}
@@ -45490,6 +45496,8 @@ MonoBehaviour:
   cur_HP: 0
   max_HP: 100
   defByEquipment: 0
+  HealthBar: {fileID: 0}
+  healthBarPrefab: {fileID: 1457011335362492320, guid: 262bbbf107ab9424c82a53703180cdb4, type: 3}
   Animator: {fileID: 3668939989498234457}
   equippedWeapon: {fileID: 11400000, guid: 04ab77c4d228d9d43b391d981cb42fc6, type: 2}
   equippedEquipment: {fileID: 11400000, guid: 866e93751f5fffc44bc3b3df2a108277, type: 2}
